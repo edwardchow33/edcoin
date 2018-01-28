@@ -1,7 +1,7 @@
 pragma solidity ^0.4.18;
 
-import 'zeppelin-solidity/contracts/token/StandardToken.sol';
-import 'zeppelin-solidity/contracts/token/BurnableToken.sol';
+import 'zeppelin-solidity/contracts/token/ERC20/StandardToken.sol';
+import 'zeppelin-solidity/contracts/token/ERC20/BurnableToken.sol';
 import 'zeppelin-solidity/contracts/ownership/Ownable.sol';
 import 'zeppelin-solidity/contracts/math/SafeMath.sol';
 
@@ -16,8 +16,8 @@ contract EdPower is StandardToken, BurnableToken, Ownable {
 	address factory;
   
   function EdPower() public{
-	totalSupply  = INITIAL_SUPPLY;
-    balances[msg.sender] = totalSupply ;
+	totalSupply_  = INITIAL_SUPPLY;
+    balances[msg.sender] = totalSupply_ ;
 	}
   
   

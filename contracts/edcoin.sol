@@ -1,7 +1,7 @@
 pragma solidity ^0.4.18;
 
-import 'zeppelin-solidity/contracts/token/StandardToken.sol';
-import 'zeppelin-solidity/contracts/token/BurnableToken.sol';
+import 'zeppelin-solidity/contracts/token/ERC20/StandardToken.sol';
+import 'zeppelin-solidity/contracts/token/ERC20/BurnableToken.sol';
 import 'zeppelin-solidity/contracts/ownership/Ownable.sol';
 import 'zeppelin-solidity/contracts/math/SafeMath.sol';
 
@@ -16,8 +16,8 @@ contract EdCoin is StandardToken, BurnableToken, Ownable {
  
   
   function EdCoin() public{
-	totalSupply  = INITIAL_SUPPLY;
-    balances[msg.sender] = totalSupply ;
+	totalSupply_  = INITIAL_SUPPLY;
+    balances[msg.sender] = totalSupply_ ;
 	}
   
   
@@ -42,7 +42,7 @@ contract EdCoin is StandardToken, BurnableToken, Ownable {
         return result;
     }
 	
-	function transferAndCall(address _recipient, uint256 _value, bytes _extraData) public{
+	function transferAndCall(address _recipient, uint256 _value, bytes _extraData) external{
 		transfer(_recipient, _value);
 		require(TokenRecipient(_recipient).tokenFallback(msg.sender,_value,_extraData)); 
 		
